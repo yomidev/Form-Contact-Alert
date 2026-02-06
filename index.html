@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link
+      rel="shortcut icon"
+      href="images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main id="container">
+      <h1 class="title">Contact Us</h1>
+      <form action="" id="formulario">
+        <div class="form-input-text">
+          <div class="input-text">
+            <label for="firstname">First Name <span class="req">*</span></label>
+            <input type="text" name="firstname" id="firstname" />
+            <small class="error"></small>
+          </div>
+          <div class="input-text">
+            <label for="lastname">Last Name <span class="req">*</span></label>
+            <input type="text" name="lastname" id="lastname" />
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="input-email">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" name="email" id="email" />
+          <small class="error"></small>
+        </div>
+        <div class="query">
+          <label for="type">Query Type <span class="req">*</span></label>
+          <div class="form-input-text radio-group">
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="type"
+                id="type_general"
+                value="General Enquiry"
+              />
+              <span class="radio-text">General Enquiry</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="type"
+                id="type_support"
+                value="Support Request"
+              />
+              <span class="radio-text">Support Request</span>
+            </label>
+          </div>
+          <small class="error"></small>
+        </div>
+        <div class="message">
+          <label for="message">Message <span class="req">*</span></label>
+          <textarea name="message" id="message" cols="12" rows="7"></textarea>
+          <small class="error"></small>
+        </div>
+        <div class="consent">
+          <label for="">
+            <input type="checkbox" name="accept" id="accept" />
+            <span>
+              I consent to beign contacted by the team
+              <span class="req">*</span>
+              <br />
+              <small class="error"></small>
+            </span>
+          </label>
+        </div>
+        <div>
+          <input type="submit" value="Submit" class="submit" />
+        </div>
+      </form>
+    </main>
+  </body>
+  <script>
+    document
+      .getElementById("formulario")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        let valido = true;
+
+        function mostrarError(campo, mensaje) {
+          campo.querySelector(".error").textContent = mensaje;
+          const input = campo.querySelector("input", "textarea");
+          if (input) {
+            input.classList.add("error-input");
+            valido = false;
+          }
+        }
+        function limpiarError(campo) {
+          campo.querySelector(".error").textContent = "";
+          const input = campo.querySelector("input", "textarea");
+          if (input) {
+            input.classList.remove("error-input");
+          }
+        }
+
+        //Validar si hay texto en los input
+        const firstname = document.getElementById("firstname").parentElement;
+        if (firstname.querySelector("input").value.trim() === "") {
+          mostrarError(firstname, "This field is required");
+        } else {
+          limpiarError(firstname);
+        }
+
+        const lastname = document.getElementById("lastname").parentElement;
+        if (lastname.querySelector("input").value.trim() === "") {
+          mostrarError(lastname, "This field is required");
+        } else {
+          limpiarError(lastname);
+        }
+
+        const email = document.getElementById("email").parentElement;
+        const emailValue = email.querySelector("input").value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailValue === "") {
+          mostrarError(email, "This field is required");
+        } else if (!emailRegex.test(emailValue)) {
+          mostrarError(email, "Please enter a valid email address");
+        } else {
+          limpiarError(email);
+        }
+
+        const message = document.getElementById("message").parentElement;
+        if (message.querySelector("textarea").value.trim() === "") {
+          mostrarError(message, "This field is required");
+        } else {
+          limpiarError(message);
+        }
+
+        const check = document.getElementById("accept").parentElement;
+        if (!document.getElementById("accept").checked) {
+          mostrarError(
+            check,
+            "To submit this form, please consent to being contacted",
+          );
+        } else {
+          limpiarError(check);
+        }
+
+        const queryField = document
+          .querySelector("input[name='type']")
+          .closest(".query");
+        const querySelected = document.querySelector(
+          "input[name='type']:checked",
+        );
+
+        if (!querySelected) {
+          mostrarError(queryField, "Please select a query type");
+        } else {
+          limpiarError(queryField);
+        }
+
+        if (valido) {
+          alert("Formulario llenado correctamente");
+        }
+      });
+  </script>
+</html>

@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "Karla";
+  src: url("../fonts/static/Karla-Regular.ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Karla";
+}
+
+body {
+  background-color: hsl(148, 38%, 91%);
+  width: 100%;
+  height: auto;
+  padding: 40px;
+}
+
+#container {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.title {
+  margin-bottom: 25px;
+}
+
+.input-text {
+  flex: 1 1 auto;
+  min-width: 250px;
+}
+
+.input-text input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid hsl(187, 24%, 22%);
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.input-text label,
+.query > label,
+.message > label {
+  color: hsl(187, 24%, 22%);
+  font-weight: bolder;
+  font-size: 10pt;
+}
+.req {
+  color: hsl(169, 82%, 27%);
+}
+.form-input-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.input-email input,
+.message textarea {
+  display: block;
+  border: 1px solid hsl(187, 24%, 22%);
+  padding: 8px;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.input-email label {
+  color: hsl(187, 24%, 22%);
+  font-weight: bolder;
+  font-size: 10pt;
+}
+.input-email {
+  margin-top: 20px;
+}
+
+.input-text input[type="text"]:focus,
+.input-email input[type="email"]:focus,
+.message textarea:focus {
+  border: 1px solid hsl(169, 82%, 27%);
+  outline: none;
+}
+
+.query {
+  margin-top: 20px;
+}
+
+.form-input-text input[type="radio"] {
+  display: block;
+  background-color: hsl(169, 82%, 27%);
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.radio-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid hsl(187, 24%, 22%);
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 250px;
+}
+
+.radio-card:has(input:checked) {
+  border-color: hsl(169, 82%, 27%);
+  background-color: hsla(169, 82%, 27%, 0.08);
+  accent-color: hsl(169, 82%, 27%);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.message textarea {
+  resize: none;
+}
+.consent {
+  margin: 20px 0 40px 0;
+  color: hsl(187, 24%, 22%);
+  font-weight: bolder;
+  font-size: 10pt;
+}
+.consent label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.consent input[type="checkbox"] {
+  border: 1px solid hsl(187, 24%, 22%);
+}
+.consent input[type="checkbox"]:checked {
+  accent-color: hsl(169, 82%, 27%);
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: hsl(169, 82%, 27%);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error {
+  color: hsl(0, 66%, 54%);
+  font-size: 12px;
+  display: block;
+  font-weight: bold;
+  margin-top: 4px;
+}
+.error-input {
+  border: 1px solid hsl(0, 66%, 54%);
+}
